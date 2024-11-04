@@ -1,0 +1,41 @@
+#version: '3.9'
+#
+#services:
+#  web:
+#    build: .
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - .:/app
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db
+#    environment:
+#      - DATABASE_URL=postgres://postgres5:12345678@db:5432/postgres5
+#
+#  db:
+#    image: postgres:14
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#    environment:
+#      POSTGRES_USER: postgres5
+#      POSTGRES_PASSWORD: 12345678
+#      POSTGRES_DB: postgres5
+#
+#volumes:
+#  postgres_data:
+
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DJANGO_SECRET_KEY=your_secret_key
+
